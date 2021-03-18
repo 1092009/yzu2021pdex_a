@@ -5,16 +5,23 @@
 // Created by wpfang on 2021/3/8.
 // Copyright © 2021 wpfang. All rights reserved.
 //
+/**
+*@author squarexin
+*@version 1.0
+*@since 2020-03-12
+*/
+
 #include <iostream>
 #include <string>
 using namespace std;
-class CCAR {
-private:
-string nickname;
+class CCAR {  /**見一個類別CCAR*/
+private: /*只有class能取值*/
+string nickname; /**限制特定多人存取值*/
 protected:
 int light;
 int wheel;
 public:
+
 CCAR() :light(2)
 {
 wheel = 5;
@@ -26,19 +33,19 @@ wheel = 5;
 this->nickname = nickname;
 cout << "car's constructor(nickname=" << nickname << ")" << endl;
 }
-~CCAR()
+~CCAR() /**建構結束時執行*/
 {
 cout << "car's destructor" << "(" << nickname << ")" << endl;
 }
-void start()
+void start() /**成員函式*/
 {
 cout << "car's start" << endl;
 }
-void stop()
+void stop() /**成員函式*/
 {
 cout << "car's stop" << endl;
 }
-void turn()
+void turn() /**成員函式*/
 {
 cout << "car's turn" << endl;
 }
@@ -50,22 +57,22 @@ CBMW() { light = 4; wheel = 4; cout << "bmw's constructor" << endl; }
 ~CBMW() { cout << "bmw's destructor" << endl; }
 void Abs()
 {
-cout << "bmw's abs" << endl;
+cout << "bmw's abs" << endl; /**增加新功能*/
 }
 void start()
 {
-cout << "bmw's start" << endl;
+cout << "bmw's start" << endl;/**使用承CCAR的函式start*/
 CCAR::start();//scope operator
 
 }
 };
 //--------------------------
 int main(int argc, const char * argv[]) {
-CBMW bmw;
+CBMW bmw;/**以bmw為名建造CBMW架構的類別（class)*/
 // bmw.light=3;
-bmw.start();
-bmw.Abs();
-bmw.stop();
+bmw.start();/**CBMW裡的void start*/
+bmw.Abs();/**CBMW裡的void Abs*/
+bmw.stop(); /**CBMW裡的void stop*/
 
 return 0;
 }
